@@ -5,7 +5,8 @@ import User from '../models/userModel';
 
 const generateToken = (userId: string): string => {
   const secretKey = 'paavan';
-  return jwt.sign({ userId }, secretKey, { expiresIn: '1h' });
+  // return jwt.sign({ userId }, secretKey, { expiresIn: '1h' });
+  return jwt.sign({ userId }, secretKey);
 };
 
 export const signUp = async (req: Request, res: Response) => {

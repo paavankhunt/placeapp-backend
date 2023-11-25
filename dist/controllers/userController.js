@@ -18,7 +18,8 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const generateToken = (userId) => {
     const secretKey = 'paavan';
-    return jsonwebtoken_1.default.sign({ userId }, secretKey, { expiresIn: '1h' });
+    // return jwt.sign({ userId }, secretKey, { expiresIn: '1h' });
+    return jsonwebtoken_1.default.sign({ userId }, secretKey);
 };
 const signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
