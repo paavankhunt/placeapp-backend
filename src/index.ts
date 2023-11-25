@@ -8,15 +8,15 @@ import verifyToken from './middleware/authMiddleware';
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 8080;
-
 app.use(cors({ origin: '*' }));
+
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const port = process.env.PORT || 8080;
 mongoose.connect(process.env.MONGO_URL);
 
 mongoose.connection.on('connected', () => {
