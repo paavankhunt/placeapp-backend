@@ -24,6 +24,11 @@ mongoose_1.default.connection.on('connected', () => {
 mongoose_1.default.connection.on('error', (err) => {
     console.error('MongoDB connection error: ', err);
 });
+app.get('/', (_req, res) => {
+    return res.send({
+        status: 'ok',
+    });
+});
 app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
 });
