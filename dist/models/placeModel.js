@@ -37,7 +37,7 @@ const placeSchema = new mongoose_1.Schema({
         type: Number,
         required: true,
     },
-    long: {
+    lng: {
         type: Number,
         required: true,
     },

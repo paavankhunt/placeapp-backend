@@ -16,9 +16,9 @@ exports.deletePlace = exports.updatePlace = exports.findPlaceById = exports.fetc
 const placeModel_1 = __importDefault(require("../models/placeModel"));
 const createPlace = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, description, lat, long } = req.body;
+        const { name, description, lat, lng } = req.body;
         const userId = req.userId;
-        const newPlace = new placeModel_1.default({ name, description, lat, long, userId });
+        const newPlace = new placeModel_1.default({ name, description, lat, lng, userId });
         yield newPlace.save();
         res.json({ message: 'Place created successfully', place: newPlace });
     }
@@ -60,7 +60,7 @@ const findPlaceById = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.findPlaceById = findPlaceById;
 const updatePlace = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { placeId, name, description, lat, long } = req.body;
+        const { placeId, name, description, lat, lng } = req.body;
         const userId = req.userId;
         const existingPlace = yield placeModel_1.default.findOne({ _id: placeId, userId });
         if (!existingPlace) {
@@ -71,7 +71,7 @@ const updatePlace = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         existingPlace.name = name;
         existingPlace.description = description;
         existingPlace.lat = lat;
-        existingPlace.long = long;
+        existingPlace.lng = lng;
         yield existingPlace.save();
         res.json({ message: 'Place updated successfully', place: existingPlace });
     }

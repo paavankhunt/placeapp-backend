@@ -4,7 +4,7 @@ interface IPlace extends Document {
   name: string;
   description: string;
   lat: number;
-  long: number;
+  lng: number;
   userId: string;
 }
 
@@ -21,7 +21,7 @@ const placeSchema = new Schema<IPlace>({
     type: Number,
     required: true,
   },
-  long: {
+  lng: {
     type: Number,
     required: true,
   },

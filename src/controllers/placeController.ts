@@ -4,9 +4,9 @@ import { CustomRequest } from '../middleware/authMiddleware';
 
 export const createPlace = async (req: CustomRequest, res: Response) => {
   try {
-    const { name, description, lat, long } = req.body;
+    const { name, description, lat, lng } = req.body;
     const userId = req.userId;
-    const newPlace = new Place({ name, description, lat, long, userId });
+    const newPlace = new Place({ name, description, lat, lng, userId });
     await newPlace.save();
     res.json({ message: 'Place created successfully', place: newPlace });
   } catch (error) {
@@ -47,7 +47,7 @@ export const findPlaceById = async (req: CustomRequest, res: Response) => {
 
 export const updatePlace = async (req: CustomRequest, res: Response) => {
   try {
-    const { placeId, name, description, lat, long } = req.body;
+    const { placeId, name, description, lat, lng } = req.body;
     const userId = req.userId;
 
     const existingPlace = await Place.findOne({ _id: placeId, userId });
@@ -60,7 +60,7 @@ export const updatePlace = async (req: CustomRequest, res: Response) => {
     existingPlace.name = name;
     existingPlace.description = description;
     existingPlace.lat = lat;
-    existingPlace.long = long;
+    existingPlace.lng = lng;
 
     await existingPlace.save();
 
