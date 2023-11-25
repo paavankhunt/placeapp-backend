@@ -32,7 +32,6 @@ app.get('/ping', (_req: Request, res: Response) => {
 });
 
 app.use('/auth', authRoutes);
-app.use(verifyToken);
 app.use('/place', placeRoutes);
 
 app.listen(port, () => {

@@ -9,7 +9,6 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const placeRoutes_1 = __importDefault(require("./routes/placeRoutes"));
-const authMiddleware_1 = __importDefault(require("./middleware/authMiddleware"));
 require('dotenv').config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
@@ -29,7 +28,6 @@ app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
 });
 app.use('/auth', userRoutes_1.default);
-app.use(authMiddleware_1.default);
 app.use('/place', placeRoutes_1.default);
 app.listen(port, () => {
     return console.log(`Server is listening on ${port}`);
